@@ -7,14 +7,13 @@ This project implements two REST API endpoints as part of the Bajaj Finserv Back
 - **POST /bfhl** - Handles Fibonacci series, Prime number filtering, LCM, HCF calculations, and AI-powered question answering
 - **GET /health** - Health check endpoint
 
-## 🚀 Deployed URL
+ Deployed URL
 
-**Live API:** [Will be added after deployment]
+**Live API:** (https://chitkara-qualifier-1-bfhl-api.vercel.app/)
 
 ## 🛠️ Tech Stack
 
 - **Runtime:** Node.js
-- **Framework:** Express.js
 - **AI Integration:** Google Gemini AI
 - **Deployment:** Vercel
 - **Environment:** dotenv
@@ -83,10 +82,6 @@ This project implements two REST API endpoints as part of the Bajaj Finserv Back
 ## 🔧 Local Setup
 
 1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/ManmeetSingh777/bajajfinserv-assignment-.git
-   cd bajajfinserv-assignment-
-   ```
 
 2. **Install dependencies:**
    ```bash
@@ -143,13 +138,7 @@ curl -X POST http://localhost:3000/bfhl \
   -d '{"AI": "What is 2+2?"}'
 ```
 
-## 📦 Dependencies
 
-- `express` - Web framework
-- `cors` - CORS middleware
-- `dotenv` - Environment variable management
-- `@google/generative-ai` - Google Gemini AI SDK
-- `nodemon` - Development auto-reload (dev dependency)
 
 ## 🌐 Deployment
 
@@ -171,11 +160,12 @@ Deployed on Vercel with automatic CI/CD from GitHub.
 
 ## 👨‍💻 Author
 
-**Name:** [Your Name]  
-**Email:** [Your Chitkara Email]  
+**Name:** [Diwanshu Baskota]  
+**Email:** [diwanshu1618.be23@chitkarauniversity.edu.in]  
 **University:** Chitkara University  
 **Class:** 2027  
 
 ## 📄 License
 
 This project is created for educational purposes as part of the Bajaj Finserv Backend Qualifier Assignment.
+
