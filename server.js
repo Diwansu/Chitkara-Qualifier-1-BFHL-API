@@ -56,10 +56,10 @@ async function getAIResponse(question) {
     let answer = response.text();
     
     
-    answer = answer.replace(/\*\*/g, ''); // Remove bold **
-    answer = answer.replace(/\*/g, '');   // Remove italic *
-    answer = answer.replace(/\n/g, ' ');  // Remove newlines
-    answer = answer.trim();                // Remove extra spaces
+    answer = answer.replace(/\*\*/g, ''); 
+    answer = answer.replace(/\*/g, '');   
+    answer = answer.replace(/\n/g, ' ');  
+    answer = answer.trim();              
     
     return answer;
   } catch (error) {
