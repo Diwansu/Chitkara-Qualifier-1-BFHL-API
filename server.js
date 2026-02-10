@@ -49,9 +49,19 @@ function calculateHCF(arr) {
 async function getAIResponse(question) {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-    const result = await model.generateContent(question);
+   
+    const prompt = `Answer this question in a single, brief sentence without any markdown formatting, bold text, or special characters. Just provide a direct, plain text answer: ${question}`;
+    const result = await model.generateContent(prompt);
     const response = await result.response;
-    return response.text();
+    let answer = response.text();
+    
+    
+    answer = answer.replace(/\*\*/g, ''); // Remove bold **
+    answer = answer.replace(/\*/g, '');   // Remove italic *
+    answer = answer.replace(/\n/g, ' ');  // Remove newlines
+    answer = answer.trim();                // Remove extra spaces
+    
+    return answer;
   } catch (error) {
     console.error('AI Error:', error);
     throw new Error('AI service unavailable');
@@ -63,7 +73,7 @@ app.post('/bfhl', async (req, res) => {
   try {
     const { fibonacci, prime, lcm, hcf, AI } = req.body;
 
-
+    
     if (!fibonacci && !prime && !lcm && !hcf && !AI) {
       return res.status(400).json({
         is_success: false,
@@ -75,7 +85,7 @@ app.post('/bfhl', async (req, res) => {
 
     let data = {};
 
-  
+
     if (fibonacci !== undefined) {
       if (typeof fibonacci !== 'number' || fibonacci < 0) {
         return res.status(400).json({
@@ -136,7 +146,7 @@ app.post('/bfhl', async (req, res) => {
       data = await getAIResponse(AI);
     }
 
- 
+    
     res.status(200).json({
       is_success: true,
       official_email: process.env.OFFICIAL_EMAIL,
