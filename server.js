@@ -49,26 +49,16 @@ function calculateHCF(arr) {
 async function getAIResponse(question) {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-   
-    const prompt = `Answer this question in a single, brief sentence without any markdown formatting, bold text, or special characters. Just provide a direct, plain text answer: ${question}`;
+    const prompt = `Answer the following question with a single word only. No punctuation, no explanation, no sentence — just one word.\n\nQuestion: ${question}`;
     const result = await model.generateContent(prompt);
     const response = await result.response;
-    let answer = response.text();
-    
-    
-    answer = answer.replace(/\*\*/g, ''); 
-    answer = answer.replace(/\*/g, '');   
-    answer = answer.replace(/\n/g, ' ');  
-    answer = answer.trim();              
-    
-    return answer;
-  } catch (error) {
+    return response.text().trim().split(/\s+/)[0].replace(/[^a-zA-Z0-9]/g, '');
+  } catch (error) {          
     console.error('AI Error:', error);
     throw new Error('AI service unavailable');
   }
-}
-
-
+}    
+  
 app.post('/bfhl', async (req, res) => {
   try {
     const { fibonacci, prime, lcm, hcf, AI } = req.body;
